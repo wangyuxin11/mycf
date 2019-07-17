@@ -9,14 +9,14 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * »ùÓÚÓÃ»§µÄĞ­Í¬¹ıÂËÍÆ¼öËã·¨ÊµÏÖ A a b d B a c C b e D c d e
+ * åŸºäºç”¨æˆ·çš„ååŒè¿‡æ»¤æ¨èç®—æ³•å®ç° A a b d B a c C b e D c d e
  */
 public class UserCF {
 
 	public static void main(String[] args) {
         /** 
-		   * ¡¤ÊäÈëÓÃ»§-->ÎïÆ·ÌõÄ¿ Ò»¸öÓÃ»§¶ÔÓ¦¶à¸öÎïÆ· 
-		   * ¡¤ÓÃ»§ID ÎïÆ·ID¼¯ºÏ 
+		   * Â·è¾“å…¥ç”¨æˆ·-->ç‰©å“æ¡ç›® ä¸€ä¸ªç”¨æˆ·å¯¹åº”å¤šä¸ªç‰©å“ 
+		   * Â·ç”¨æˆ·ID ç‰©å“IDé›†åˆ 
 		   * A  a b d 
 		   * B  a c 
 		   * C  b e 
@@ -24,47 +24,47 @@ public class UserCF {
 		   */
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input the total users number:");
-        //ÊäÈëÓÃ»§×ÜÁ¿ 
+        //è¾“å…¥ç”¨æˆ·æ€»é‡ 
         int N = scanner.nextInt();
         int[][] sparseMatrix = new int[N][N];
-        //½¨Á¢ÓÃ»§Ï¡Êè¾ØÕó£¬ÓÃÓÚÓÃ»§ÏàËÆ¶È¼ÆËã¡¾ÏàËÆ¶È¾ØÕó¡¿ 
+        //å»ºç«‹ç”¨æˆ·ç¨€ç–çŸ©é˜µï¼Œç”¨äºç”¨æˆ·ç›¸ä¼¼åº¦è®¡ç®—ã€ç›¸ä¼¼åº¦çŸ©é˜µã€‘ 
         Map<String, Integer> userItemLength = new HashMap<>();
-        //´æ´¢Ã¿Ò»¸öÓÃ»§¶ÔÓ¦µÄ²»Í¬ÎïÆ·×ÜÊı eg: A 3 
+        //å­˜å‚¨æ¯ä¸€ä¸ªç”¨æˆ·å¯¹åº”çš„ä¸åŒç‰©å“æ€»æ•° eg: A 3 
         Map<String, Set<String>> itemUserCollection = new HashMap<>();
-        //½¨Á¢ÎïÆ·µ½ÓÃ»§µÄµ¹ÅÅ±í eg: a A B 
+        //å»ºç«‹ç‰©å“åˆ°ç”¨æˆ·çš„å€’æ’è¡¨ eg: a A B 
         Set<String> items = new HashSet<>();
-        //¸¨Öú´æ´¢ÎïÆ·¼¯ºÏ 
+        //è¾…åŠ©å­˜å‚¨ç‰©å“é›†åˆ 
         Map<String, Integer> userID = new HashMap<>();
-        //¸¨Öú´æ´¢Ã¿Ò»¸öÓÃ»§µÄÓÃ»§IDÓ³Éä 
+        //è¾…åŠ©å­˜å‚¨æ¯ä¸€ä¸ªç”¨æˆ·çš„ç”¨æˆ·IDæ˜ å°„ 
         Map<Integer, String> idUser = new HashMap<>();
-        //¸¨Öú´æ´¢Ã¿Ò»¸öID¶ÔÓ¦µÄÓÃ»§Ó³Éä 
+        //è¾…åŠ©å­˜å‚¨æ¯ä¸€ä¸ªIDå¯¹åº”çš„ç”¨æˆ·æ˜ å°„ 
         System.out.println("Input user--items maping infermation:<eg:A a b d>");
         scanner.nextLine();
         for (int i = 0; i < N ; i++){
-            //ÒÀ´Î´¦ÀíN¸öÓÃ»§ ÊäÈëÊı¾İ ÒÔ¿Õ¸ñ¼ä¸ô 
+            //ä¾æ¬¡å¤„ç†Nä¸ªç”¨æˆ· è¾“å…¥æ•°æ® ä»¥ç©ºæ ¼é—´éš” 
             String[] user_item = scanner.nextLine().split(" ");
             int length = user_item.length;
             userItemLength.put(user_item[0], length-1);
             //eg: A 3 
             userID.put(user_item[0], i);
-            //ÓÃ»§IDÓëÏ¡Êè¾ØÕó½¨Á¢¶ÔÓ¦¹ØÏµ 
+            //ç”¨æˆ·IDä¸ç¨€ç–çŸ©é˜µå»ºç«‹å¯¹åº”å…³ç³» 
             idUser.put(i, user_item[0]);
-            //½¨Á¢ÎïÆ·--ÓÃ»§µ¹ÅÅ±í 
+            //å»ºç«‹ç‰©å“--ç”¨æˆ·å€’æ’è¡¨ 
             for (int j = 1; j < length; j ++){
                 if(items.contains(user_item[j])){
-                    //Èç¹ûÒÑ¾­°üº¬¶ÔÓ¦µÄÎïÆ·--ÓÃ»§Ó³Éä£¬Ö±½ÓÌí¼Ó¶ÔÓ¦µÄÓÃ»§ 
+                    //å¦‚æœå·²ç»åŒ…å«å¯¹åº”çš„ç‰©å“--ç”¨æˆ·æ˜ å°„ï¼Œç›´æ¥æ·»åŠ å¯¹åº”çš„ç”¨æˆ· 
                     itemUserCollection.get(user_item[j]).add(user_item[0]);
                 } else{
-                    //·ñÔò´´½¨¶ÔÓ¦ÎïÆ·--ÓÃ»§¼¯ºÏÓ³Éä 
+                    //å¦åˆ™åˆ›å»ºå¯¹åº”ç‰©å“--ç”¨æˆ·é›†åˆæ˜ å°„ 
                     items.add(user_item[j]);
                     itemUserCollection.put(user_item[j], new HashSet<String>());
-                    //´´½¨ÎïÆ·--ÓÃ»§µ¹ÅÅ¹ØÏµ 
+                    //åˆ›å»ºç‰©å“--ç”¨æˆ·å€’æ’å…³ç³» 
                     itemUserCollection.get(user_item[j]).add(user_item[0]);
                 }
             }
         }
         System.out.println(itemUserCollection.toString());
-        //¼ÆËãÏàËÆ¶È¾ØÕó¡¾Ï¡Êè¡¿ 
+        //è®¡ç®—ç›¸ä¼¼åº¦çŸ©é˜µã€ç¨€ç–ã€‘ 
         Set<Entry<String, Set<String>>> entrySet = itemUserCollection.entrySet();
         Iterator<Entry<String, Set<String>>> iterator = entrySet.iterator();
         while(iterator.hasNext()){
@@ -75,7 +75,7 @@ public class UserCF {
                         continue;
                     }
                     sparseMatrix[userID.get(user_u)][userID.get(user_v)] += 1;
-                    //¼ÆËãÓÃ»§uÓëÓÃ»§v¶¼ÓĞÕı·´À¡µÄÎïÆ·×ÜÊı
+                    //è®¡ç®—ç”¨æˆ·uä¸ç”¨æˆ·véƒ½æœ‰æ­£åé¦ˆçš„ç‰©å“æ€»æ•°
                 }
             }
         }
@@ -83,24 +83,24 @@ public class UserCF {
         System.out.println("Input the user for recommendation:<eg:A>");
         String recommendUser = scanner.nextLine();
         System.out.println(userID.get(recommendUser));
-        //¼ÆËãÓÃ»§Ö®¼äµÄÏàËÆ¶È¡¾ÓàÏÒÏàËÆĞÔ¡¿ 
+        //è®¡ç®—ç”¨æˆ·ä¹‹é—´çš„ç›¸ä¼¼åº¦ã€ä½™å¼¦ç›¸ä¼¼æ€§ã€‘ 
         int recommendUserId = userID.get(recommendUser);
         for (int j = 0;j < sparseMatrix.length; j++) {
             if(j != recommendUserId){
-                System.out.println(idUser.get(recommendUserId)+"--"+idUser.get(j)+"ÏàËÆ¶È:"+sparseMatrix[recommendUserId][j]/Math.sqrt(userItemLength.get(idUser.get(recommendUserId))*userItemLength.get(idUser.get(j))));
+                System.out.println(idUser.get(recommendUserId)+"--"+idUser.get(j)+"ç›¸ä¼¼åº¦:"+sparseMatrix[recommendUserId][j]/Math.sqrt(userItemLength.get(idUser.get(recommendUserId))*userItemLength.get(idUser.get(j))));
             }
         }
-        //¼ÆËãÖ¸¶¨ÓÃ»§recommendUserµÄÎïÆ·ÍÆ¼ö¶È 
+        //è®¡ç®—æŒ‡å®šç”¨æˆ·recommendUserçš„ç‰©å“æ¨èåº¦ 
         for (String item: items){
-            //±éÀúÃ¿Ò»¼şÎïÆ· 
+            //éå†æ¯ä¸€ä»¶ç‰©å“ 
             Set<String> users = itemUserCollection.get(item);
-            //µÃµ½¹ºÂòµ±Ç°ÎïÆ·µÄËùÓĞÓÃ»§¼¯ºÏ 
+            //å¾—åˆ°è´­ä¹°å½“å‰ç‰©å“çš„æ‰€æœ‰ç”¨æˆ·é›†åˆ 
             if(!users.contains(recommendUser)){
-                //Èç¹û±»ÍÆ¼öÓÃ»§Ã»ÓĞ¹ºÂòµ±Ç°ÎïÆ·£¬Ôò½øĞĞÍÆ¼ö¶È¼ÆËã 
+                //å¦‚æœè¢«æ¨èç”¨æˆ·æ²¡æœ‰è´­ä¹°å½“å‰ç‰©å“ï¼Œåˆ™è¿›è¡Œæ¨èåº¦è®¡ç®— 
                 double itemRecommendDegree = 0.0;
                 for (String user: users){
                     itemRecommendDegree += sparseMatrix[userID.get(recommendUser)][userID.get(user)]/Math.sqrt(userItemLength.get(recommendUser)*userItemLength.get(user));
-                    //ÍÆ¼ö¶È¼ÆËã
+                    //æ¨èåº¦è®¡ç®—
                 }
                 System.out.println("The item "+item+" for "+recommendUser +"'s recommended degree:"+itemRecommendDegree);
             }

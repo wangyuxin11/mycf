@@ -3,29 +3,29 @@ package com.github.test;
 public class Secondwork {
 	
 	public static void main(String args[]) { 
-		String[] cs = {"ÄãºÃ","ÇëÎÊ","Ê²Ã´","Ãû×Ö"}; //´Êµä 
-		String a = "ÄãºÃ£¡ÇëÎÊÄã½ÐÊ²Ã´Ãû×Ö£¿"; 
-		System.out.print("Ô­¾ä£º"); 
+		String[] cs = {"ä½ å¥½","è¯·é—®","ä»€ä¹ˆ","åå­—"}; //è¯å…¸ 
+		String a = "ä½ å¥½ï¼è¯·é—®ä½ å«ä»€ä¹ˆåå­—ï¼Ÿ"; 
+		System.out.print("åŽŸå¥ï¼š"); 
 		System.out.print(a + '\n'); 
-		System.out.print("²ð·ÖºóÎª£º"); 
-		String[] cs2 = new String[100]; //½á¹ûÊý×é 
-		int jud=0;//ÕÒµ½Æ¥Åä×Ö·û´®Óë·ñµÄ±êÖ¾ 
+		System.out.print("æ‹†åˆ†åŽä¸ºï¼š"); 
+		String[] cs2 = new String[100]; //ç»“æžœæ•°ç»„ 
+		int jud=0;//æ‰¾åˆ°åŒ¹é…å­—ç¬¦ä¸²ä¸Žå¦çš„æ ‡å¿— 
 		int j=0; 
-		String temp=null;//³õÊ¼»¯ÁÙÊ±×Ö·û´® 
+		String temp=null;//åˆå§‹åŒ–ä¸´æ—¶å­—ç¬¦ä¸² 
 		for(;a.length()>0;) {
 			for(int i = 0;i<a.length();i++) {
-				temp = a.substring(i);//Ã¿´Î½ØÈ¡µôÊ×¸ö×Ö·û 
-				if(isin(cs,temp) == true)//Èç¹ûÄ¿±ê×Ö·û´®ÔÚÊý×éÖÐ 
+				temp = a.substring(i);//æ¯æ¬¡æˆªå–æŽ‰é¦–ä¸ªå­—ç¬¦ 
+				if(isin(cs,temp) == true)//å¦‚æžœç›®æ ‡å­—ç¬¦ä¸²åœ¨æ•°ç»„ä¸­ 
 				{
 					cs2[j] = temp; 
 					jud = 1; 
 					int number = temp.length(); 
 					a = a.substring(0,a.length()-number); 
 				} 
-				if(jud == 0)//Ã»ÓÐÕÒµ½Æ¥Åä×Ö·û´® 
+				if(jud == 0)//æ²¡æœ‰æ‰¾åˆ°åŒ¹é…å­—ç¬¦ä¸² 
 				{
-					cs2[j] = a.substring(a.length()-1,a.length());//½«×îºóÒ»¸öÔªËØ·ÅÔÚcs2ÀïÃæ 
-					a = a.substring(0, a.length()-1);//½Øµô×îºóÒ»¸öÔªËØ¼ÌÐøÑ­»·¡£ 
+					cs2[j] = a.substring(a.length()-1,a.length());//å°†æœ€åŽä¸€ä¸ªå…ƒç´ æ”¾åœ¨cs2é‡Œé¢ 
+					a = a.substring(0, a.length()-1);//æˆªæŽ‰æœ€åŽä¸€ä¸ªå…ƒç´ ç»§ç»­å¾ªçŽ¯ã€‚ 
 				} 
 				jud = 0; 
 				j++; 
@@ -38,8 +38,8 @@ public class Secondwork {
 		}
 	}
 		
-	/* * ÏÂÃæÎªÅÐ¶Ï×Ö·û´®ÊÇ·ñÔÚ´ÊµäÖÐµÄº¯Êý·½·¨ */ 
-	static public boolean isin(String[] cs,String temp)//ÅÐ¶ÏÄ¿±ê×Ö·û´®ÊÇ·ñÔÚ¶Ô±È×Ö·û´®Êý×éÖÐ 
+	/* * ä¸‹é¢ä¸ºåˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å¦åœ¨è¯å…¸ä¸­çš„å‡½æ•°æ–¹æ³• */ 
+	static public boolean isin(String[] cs,String temp)//åˆ¤æ–­ç›®æ ‡å­—ç¬¦ä¸²æ˜¯å¦åœ¨å¯¹æ¯”å­—ç¬¦ä¸²æ•°ç»„ä¸­ 
 	{
 		int i; 
 		for(i = 0;i<cs.length;) { 

@@ -21,7 +21,7 @@ public class ChnSeq {
 
 	public List<String> loadFile() throws FileNotFoundException, IOException {
 		List<String> lines = new ArrayList<String>();
-		String filename = "wordFre.txt";
+		String filename = "C:\\Users\\wangyx\\github\\mycf\\src\\main\\java\\com\\github\\segment\\base_statistics\\wordFre.txt";
 		BufferedReader br = new BufferedReader(new FileReader(filename));
 		String tmp;
 		while ((tmp = br.readLine()) != null) {
@@ -233,7 +233,7 @@ public class ChnSeq {
 		cs.init();
 		String sentence = "在这一年中，改革开放和现代化建设继续向前迈进。经济保持了“高增长、低通胀”的良好发展态势。农业生产再次获得好的收成，企业改革继续深化，人民生活进一步改善。对外经济技术合作与交流不断扩大。";
 		String segs = cs.segment(sentence);
-		System.out.println(segs);
+		System.err.println(segs);
 	}
 
 }
